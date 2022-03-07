@@ -14,7 +14,7 @@ app.get("/", function (req, res) {
 app.get("/api/:whoami", (req, res) => {
   let ip = req.ip;
   let lang = req.acceptsLanguages().join(",");
-  let software = req.hostname;
+  let software = req.get("user-agent");
   res.json({ ipaddress: ip, language: lang, software: software });
   console.log({ ip: ip, lang: lang, software: software });
 });
